@@ -1,5 +1,5 @@
 // for jwt we require 3 things header payload and sign to configure jwt steps are
-// step 1-instal jsonwebtoken , step 2-import jwt , step 3-create payload
+// step 1-instal jsonwebtoken , step 2-import jwt , step 3-create payload, step-4 verify payload
 const express=require('express')
 const jwt=require('jsonwebtoken')
 const router=express.Router()
@@ -8,17 +8,17 @@ const model=require('../Models/Model')
 
 function verifyToken(req,res,next){
 if(!req.headers.authorization){
-    console.log("A")
+ 
     return res.status(401).send("unauthorized user")
 }
 let token= req.headers.authorization.split(' ')[1]
 if(token==='null'){
-    console.log("B")
+   
     return res.status(401).send("unauthorized user")
 }
 let payload=jwt.verify(token,'secretkey')
 if(!payload){
-    console.log("c")
+    
     return res.status(401).send("unauthorized user")
 }
 req.userId=payload.subject
