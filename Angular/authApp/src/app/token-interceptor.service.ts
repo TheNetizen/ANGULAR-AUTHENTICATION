@@ -9,7 +9,7 @@ import { AuthService } from './auth.service';
 export class TokenInterceptorService implements HttpInterceptor{
   tokenStored=this.service.getToken()
   constructor(private service:AuthService) { }
-  intercept(req:any,next:any): any{
+  intercept(req:any,next:any): any{ 
     let tokenizedReq=req.clone({
       setHeaders:{
         
